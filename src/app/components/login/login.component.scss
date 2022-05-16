@@ -1,0 +1,80 @@
+.bg{
+    background-image: url(/assets/SFSSHS_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1370px;
+    height: 698px;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    bottom: 0;
+    size-adjust: 100%;
+}
+
+.ui-bg{
+    background-color: black;
+    border-radius: 5px;
+    border: 3px solid white;
+    opacity: 0.7;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 50px;
+    width: 450px;
+    height: 500px;
+}
+
+.greeting{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 30px;
+}
+
+input{
+    background-color: rgb(255, 251, 251);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    height: 30px;
+    font-size: 14pt;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.login-box {
+    margin: 40px;
+    background: white;
+    padding: 20px;
+    justify-content: center;
+    border-radius: 10px;
+    height: 270px;
+}
+
+.error{
+    color: red;
+    font-size: 12pt;
+}
+h2 {
+    border-bottom: 2px solid black;
+    color: black;
+    text-align: center;
+    padding-bottom: 20px;
+    margin: 0 0 20px;
+}
+
+.btn {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    background-color: rgb(0, 132, 255);
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    
+}
