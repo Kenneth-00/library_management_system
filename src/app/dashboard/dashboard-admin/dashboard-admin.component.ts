@@ -12,19 +12,7 @@ export class DashboardAdminComponent implements OnInit {
 
   constructor(private dataService: ApiService) {
     dataService.getLoggedInName.subscribe(name => this.changeName(name));
-
-    if(this.dataService.isLoggedIn())
-    {
-      console.log("logged in");
-      this.loginbtn = false;
-      this.logoutbtn = true
-    }
-
-    else
-    {
-      this.loginbtn = true;
-      this.logoutbtn = false
-    }
+    this.dataService.adminviewBooks();
   }
   ngOnInit(): void {
   }

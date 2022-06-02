@@ -4,29 +4,13 @@
     padding-left: 0;
 }
 
-.search-toolbar{
-    position: fixed;
-}
-
-.search-toolbar, .content{
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 32px;
-    width: auto;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .sidebar{
     background: #002b5c;
     margin: 16px;
     width: 200px;
     border-right: none;
     border-radius: 10px;
-    padding: 16px;
-    text-align: center;
+    padding: 8px;
 }
 
 .side-toolbar{
@@ -37,10 +21,13 @@
 }
 
 .content{
-    height: calc(100vh - 98px);
-
-    font-size: 2rem;
+    font-size: 15pt;
     color: lightgray;
+
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    width: auto;
 }
 
 .profile{
@@ -63,6 +50,7 @@ img{
     width: 45px;
     border: 1px solid white;
     border-radius: 50%;
+    margin: auto;
 }
 
 .dropdown{
@@ -102,6 +90,7 @@ img{
     font-size: 15pt;
     text-decoration: none;
     text-size-adjust: auto;
+    width: auto;
 }
 
 .sidenav_anchor:hover{
@@ -114,20 +103,6 @@ mat-divider{
     margin-top: 90px;
     margin-bottom: 16px;
     background-color: rgba(255, 255, 255, 0.5);
-}
-
-.bar{
-    margin: 7px;
-}
-
-.searchbar{
-    border-radius: 30px;
-    border: 1px solid #0e0e0e;
-    height: 45px;
-    width: 450px;
-    font-size: 16px;
-    padding-left: 10px;
-    outline: none;
 }
 
 ::-webkit-input-placeholder{

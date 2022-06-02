@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="search-toolbar">
+    <span>Search</span>
+    <div class="bar">
+        <input class="searchbar" type="search" placeholder="Title, Author">   
+        <button mat-icon-button>
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<mat-card>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Action</th>
+                <th>Book ID</th>
+                <th>Book Title</th>
+                <th>Authors</th>
+                <th>Date Published</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+        
+            <tr *ngFor="let books of book">
+                <td>
+                    <button type="button" (click)="add(books)">
+                        <mat-icon>
+                            add
+                        </mat-icon>
+                    </button>
+                </td>
+                <td>{{books.book_id}}</td>
+                <td>{{books.book_title}}</td>
+                <td>{{books.authors}}</td>
+                <td>{{books.date_published}}</td>
+                <td>{{books.category}}</td>
+                <td>{{books.quantity}}</td>
+                <td>{{books.status}}</td>
+            </tr>
+        
+        </table>
+    </div>
+    
+</mat-card>
+
+<div class="borrowed_book" id="addedbooks">
+    <table class="container">
+        <tr>
+            <th>Action</th>
+            <th>Book Title</th>
+        </tr>
+    
+        <tr *ngFor="let added of bookAdd">
+            <td>
+                <button type="button" (click)="delete(added)">
+                    <mat-icon>
+                        delete
+                    </mat-icon>
+                </button>
+            </td>
+            <td>{{added.book_title}}</td>
+        </tr>
+    
+    </table>
+
+</div>

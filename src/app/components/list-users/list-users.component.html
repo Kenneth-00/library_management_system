@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" class="search-toolbar">
+    <span>Search</span>
+    <div class="bar">
+        <input class="searchbar" type="search" placeholder="Title, Author">   
+        <button mat-icon-button class="btnSearch">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<table class="container">
+    <tr>
+        <th>Action</th>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+
+    <tr *ngFor="let x of user">
+        <td>
+            <a routerLink="../edit-book-details" routerLinkActive="active">
+            <button class="btnIcon" (click)="viewUserDetails()">
+                <mat-icon>
+                    edit
+                </mat-icon>
+            </button></a>
+            <button class="btnIcon">
+                <mat-icon>
+                    delete
+                </mat-icon>
+            </button>
+        </td>
+        <td>{{x.id}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.role}}</td>
+    </tr>
+
+</table>
+<button class="btn btn-primary">
+    <a routerLink="../register"><< BACK</a>
+</button>

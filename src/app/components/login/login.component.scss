@@ -1,80 +1,115 @@
-.bg{
-    background-image: url(/assets/SFSSHS_bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 1370px;
-    height: 698px;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0;
-    bottom: 0;
-    size-adjust: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
 }
 
-.ui-bg{
-    background-color: black;
-    border-radius: 5px;
-    border: 3px solid white;
-    opacity: 0.7;
-    margin-left: auto;
-    margin-right: 20px;
-    margin-top: 50px;
-    width: 450px;
-    height: 500px;
+body{
+    display: flex;
+    justify-content: center;
 }
 
-.greeting{
-    font-size: 50px;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    padding-bottom: 10px;
-    padding-top: 30px;
+.container {
+    width: 400px;
+    height: 70vh;
+    background-color: rgba(5, 34, 201, 0.541);
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
-input{
-    background-color: rgb(255, 251, 251);
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 5px;
-    height: 30px;
-    font-size: 14pt;
+.upper-portion {
+    height: 35%;
+}
+
+.upper-portion, .lower-portion {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.lower-portion {
+    height: 64%;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.upper-portion img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.login-label {
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 0 0 2px black, 0 0 1px black, 0 0 2px black, 0 0 2px black;
+    align-self: center;
+}
+
+.login-formfield-container {
+    flex: 1;
+    background-color: rgb(255, 254, 254);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 5px;
+    justify-content: center;
+    align-self: center;
+    align-self: center;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.login-formfield {
+    width: 100%;
+    padding: 10px;
+
+    display: block;
+    flex-direction: row;
+}
+
+.login-formfield-label {
+    width: 1.5em;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 2px black, 0 0 1px black, 0 0 2px black, 0 0 2px black;
 }
 
 mat-form-field {
     display: block;
 }
 
-.login-box {
-    margin: 40px;
-    background: white;
-    padding: 20px;
-    justify-content: center;
-    border-radius: 10px;
-    height: 270px;
-}
-
 .error{
     color: red;
     font-size: 12pt;
 }
-h2 {
-    border-bottom: 2px solid black;
-    color: black;
-    text-align: center;
-    padding-bottom: 20px;
-    margin: 0 0 20px;
+input {
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 20px;
+    border-radius: 5px;
+    padding-left: 1px;
 }
 
 .btn {
     text-decoration: none;
-    text-align: center;
     color: white;
     font-size: 20px;
     background-color: rgb(0, 132, 255);
     cursor: pointer;
-    width: 100%;
+    width: 26vw;
     height: auto;
+    margin-top: 5px;
     margin-bottom: 10px;
-    
+    margin-left: 1px;
 }

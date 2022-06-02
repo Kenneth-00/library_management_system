@@ -1,48 +1,79 @@
-<div class="bg">
-    <div class="ui-bg">
-        <p class="greeting"><strong>REGISTER</strong></p>
-        <form [formGroup] ="loginForm" (ngSubmit)="postdata(loginForm)" class="login-box">
-            <mat-form-field>
-                <mat-label for="name">Name</mat-label>
-                <input matInput class="form-control" name="name" formControlName="name" placeholder="Enter name">
-                <mat-error *ngIf="email.invalid">
-                    <span *ngIf="email.errors?.['required']">
-                        Email is required
-                    </span>
-                    <span *ngIf="email.errors?.['email']">
-                        Email is invalid
-                    </span>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label for="email">Email address</mat-label>
-                <input matInput class="form-control" name="email" formControlName="email" placeholder="Enter email">
-                <mat-error *ngIf="email.invalid">
-                    <span *ngIf="email.errors?.['required']">
-                        Email is required
-                    </span>
-                    <span *ngIf="email.errors?.['email']">
-                        Email is invalid
-                    </span>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label for="password">Password</mat-label>
-                <input matInput type="password" class="form-control" name="password" formControlName="password" placeholder="Enter Password">
-                <mat-error *ngIf="password.invalid">
-                    <span *ngIf="password.errors?.['required']">
-                        Password is required
-                    </span>
-                    <span *ngIf="password.errors?.['minlength']">
-                        password must at least 6
-                    </span>
-                </mat-error>
-            </mat-form-field>
-            <button type="submit" class="btn" [disabled]="!loginForm.valid" routerLink="dashboard-admin" routerLinkActive="active">
-               REGISTER
-            </button>
-        </form>
-        <router-outlet></router-outlet>
+<div class="container">
+    <div class="upper-portion">
+        <img src="/assets/logo.jpeg">
+    </div>
+
+    <div class="lower-portion">
+        <div class="register-label">
+            Register
+        </div>
+        <div class="register-formfield-container">
+            <div class="register-formfield">
+                <form [formGroup] ="registerForm" (ngSubmit)="postdata(registerForm)">
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput class="form-control" name="name" formControlName="name" placeholder="Enter name">
+                        <mat-error *ngIf="name.invalid">
+                            <span *ngIf="name.errors?.['required']">
+                                Name is required
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Email address</mat-label>
+                        <input matInput class="form-control" name="email" formControlName="email" placeholder="Enter email">
+                        <mat-error *ngIf="email.invalid">
+                            <span *ngIf="email.errors?.['required']">
+                                Email is required
+                            </span>
+                            <span *ngIf="email.errors?.['email']">
+                                Email is invalid
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" class="form-control" name="password" formControlName="password" placeholder="Enter Password">
+                        <mat-error *ngIf="password.invalid">
+                            <span *ngIf="password.errors?.['required']">
+                                Password is required
+                            </span>
+                            <span *ngIf="password.errors?.['minlength']">
+                                Password must at least 6
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput type="password" class="form-control" name="confirmpassword" formControlName="confirmpassword" placeholder="Re-enter your password">
+                        <mat-error *ngIf="confirmpassword.invalid">
+                            <span *ngIf="confirmpassword.errors?.['required']">
+                                Confirm password is required
+                            </span>
+                            <span *ngIf="confirmpassword.errors?.['MustMatch']">
+                                Confirm password didn't match
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="role-field">
+                        <label class="role-label">Roles:</label>
+                        <mat-radio-group class="radiobtn" name="role" formControlName="role">
+                            <mat-radio-button value="Admin">Admin</mat-radio-button>
+                            <mat-radio-button value="Teacher">Teacher</mat-radio-button>
+                            <mat-radio-button value="Student">Student</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <button type="submit" class="btn" [disabled]="!registerForm.valid">
+                        REGISTER
+                    </button>
+                    <button class="btn btn-warn">
+                        <a routerLink="../list-of-users" routerLinkActive="active">
+                            VIEW USERS >>
+                        </a>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

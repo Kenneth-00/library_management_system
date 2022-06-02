@@ -1,41 +1,68 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Output, EventEmitter} from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Users } from './users';
-
+import { Books } from './books';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   
-  redirectUrl: string;
-  baseUrl: string = "http://localhost/LMS/php";
+  baseUrl: string = "http://localhost:8080/databaseConnection";
 
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-  // loginForm: any;
 
   constructor(private httpClient: HttpClient) {  
+    this.adminviewBooks();
   }
   
-  
-  public userlogin(username: any, password: any){
-    alert(username)
-    return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password})
+  userlogin(email: any, password: any){
+    return this.httpClient.post<Users[]>(this.baseUrl + '/login.php', { email, password})
     .pipe(map(Users => {
-      this.setToken(Users[0].name);
+      this.setToken(Users[0].email);
       this.getLoggedInName.emit(true);
       return Users;
     }));
-    // localStorage.setItem("test1", JSON.stringify(this.loginForm.value));
+  }
+
+  userregistration(name: any, email: any, password: any, confirmpassword: any, role: any): Observable<any>{
+    return this.httpClient.post<Users[]>(this.baseUrl + '/register.php', {name, email, password, confirmpassword, role})
+  }
+
+  viewUsers(): Observable<any> {
+    return this.httpClient.get<Users[]>(this.baseUrl + '/viewUsers.php');
 
   }
 
-  public userregistration(name: any, email: any, pwd: any) {
-    return this.httpClient.post<any>(this.baseUrl + '/register.php', {name, email, pwd})
-    .pipe(map(Users => {
-      return Users;
-    }));
+  addBook(book_title: any, authors: any, date_published: any, category: any, quantity: any, status: any): Observable<any> {
+    return this.httpClient.post<Books[]>(this.baseUrl + '/addBook.php', {book_title, authors, date_published, category, quantity, status})
+
+  }
+
+  adminviewBooks() {
+    return this.httpClient.get<Books[]>(this.baseUrl + '/viewBook.php');
+  }
+
+  updateBook(book_title: any, authors: any, date_published: any, category: any, quantity: any, status: any) : Observable<any> {
+    return this.httpClient.put<any>(this.baseUrl + '/updateBook.php', {book_title, authors, date_published, category, quantity, status});
+  }
+
+  userviewBooks() {
+    return this.httpClient.get<Books[]>(this.baseUrl + '/viewBook.php');
+  }
+
+  borrowBook(bookAdded:any): Observable<any>{
+    return this.httpClient.post<any>(this.baseUrl + '/borrowBook.php', {bookAdded});
+  }
+
+  getBookDetail(id:number) {
+    return this.httpClient.get<any>(this.baseUrl + '/viewBook.php?book_id=' + id);
+
+  }
+
+  deleteBook(book_id:number) {
+    return this.httpClient.delete<Books[]>(this.baseUrl + '/deleteBook.php' + book_id);
   }
 
   //token
@@ -44,18 +71,14 @@ export class ApiService {
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    localStorage.getItem('token');
   }
 
   deleteToken() {
     localStorage.removeItem('token');
   }
 
-  isLoggedIn() {
-    const usertoken = this. getToken();
-    if (usertoken != null) {
-      return true
-    }
-    return false;
+  isLoggedIn(): boolean {
+    return true
   }
 }

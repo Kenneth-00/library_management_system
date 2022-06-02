@@ -12,7 +12,7 @@
         <div class="dropdown">
             drop
             <div class="dropdown-content">
-                <a class="drpdwn_anchor" (click)="logout()" routerLink="login" routerLinkActive="active">Logout</a>
+                <a class="drpdwn_anchor" routerLink="/login" routerLinkActive="active">Logout</a>
             </div>
         </div>
     </div>
@@ -26,19 +26,21 @@
 
         <mat-list>
             <mat-list-item>
-                <a class="sidenav_anchor" href="#">In Stack</a>
+                <a class="sidenav_anchor" routerLink="in-stack" routerLinkActive="active">In Stack</a>
             </mat-list-item>
             <mat-list-item>
-                <a class="sidenav_anchor" href="#">Add Books</a>
+                <a class="sidenav_anchor" routerLink="add-book" routerLinkActive="active">Add Books</a>
             </mat-list-item>
             <mat-list-item>
-                <a class="sidenav_anchor" href="#">Returned Books</a>
+                <a class="sidenav_anchor" routerLink="pending-books" routerLinkActive="active">Returned Books</a>
             </mat-list-item>
             <mat-list-item>
-                <a class="sidenav_anchor" routerLink="/register" routerLinkActive="active">Register Student</a>
+                <a class="sidenav_anchor" routerLink="register" routerLinkActive="active">Register Student</a>
             </mat-list-item>
         </mat-list>
+
         <mat-divider></mat-divider>
+        
         <mat-list>
             <mat-list-item>
                 <a class="sidenav_anchor" href="#">Rules And Penalties</a>
@@ -49,18 +51,9 @@
         </mat-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-        <mat-toolbar color="primary" class="search-toolbar">
-            <span>Search</span>
-            <div class="bar">
-                <input class="searchbar" type="search" placeholder="Title, Author">   
-                <button mat-icon-button>
-                    <mat-icon>search</mat-icon>
-                </button>
-            </div>
-        </mat-toolbar>
-        <div class="content">
-            hello
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>  
+    
+    <div class="content">
+        <router-outlet></router-outlet> 
+    </div>
+</mat-sidenav-container> 
+

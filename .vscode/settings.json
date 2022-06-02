@@ -6,12 +6,12 @@
             },
             "previewLimit": 50,
             "server": "localhost",
-            "port": 3306,
+            "port": 4200,
             "driver": "MySQL",
             "name": "myDatabase",
-            "database": "registeredDB",
-            "username": "keanna",
-            "password": "8av3m3"
+            "database": "librarydb",
+            "username": "root",
+            "password": ""
         }
     ]
 }

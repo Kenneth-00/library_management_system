@@ -1,0 +1,46 @@
+<mat-toolbar color="primary" class="search-toolbar">
+    <span>Search</span>
+    <div class="bar">
+        <input class="searchbar" type="search" placeholder="Title, Author">   
+        <button mat-icon-button>
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<table class="container">
+    <tr>
+        <th>Action</th>
+        <th>Book ID</th>
+        <th>Book Title</th>
+        <th>Authors</th>
+        <th>Date Published</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Status</th>
+    </tr>
+
+    <tr *ngFor="let x of book">
+        <td>
+            <a routerLink="../edit-book-details/{{x.book_id}}" routerLinkActive="active">
+            <button >
+                <mat-icon>
+                    edit
+                </mat-icon>
+            </button></a>
+            <button (click)="removeBook(x)">
+                <mat-icon>
+                    delete
+                </mat-icon>
+            </button>
+        </td>
+        <td>{{x.book_id}}</td>
+        <td>{{x.book_title}}</td>
+        <td>{{x.authors}}</td>
+        <td>{{x.date_published}}</td>
+        <td>{{x.category}}</td>
+        <td>{{x.quantity}}</td>
+        <td>{{x.status}}</td>
+    </tr>
+
+</table>

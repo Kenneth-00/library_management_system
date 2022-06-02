@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, NgForm, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators,  FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { ApiService } from 'src/app/api.service';
+import { Role } from 'src/app/role';
+import { Users } from 'src/app/users';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  // loginForm = this.formBuilder.group ({
-  //   email: this.formBuilder.control(null, [Validators.required, Validators.email]),
-  //   password: this.formBuilder.control(null, [Validators.required, Validators.minLength(6)])
-  // })
-  
+  users: Users[];
+
   constructor(private formBuilder:FormBuilder, private dataService: ApiService, private router: Router) {
     this.loginForm = this.formBuilder.group ({
       email: this.formBuilder.control(null, [Validators.required, Validators.email]),
@@ -28,25 +26,28 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
-  postdata(loginForm1: { value: { email: any; password: any; }; }){
-    this.dataService.userlogin(loginForm1.value.email, loginForm1.value.password)
-    .pipe(first())
-    .subscribe(
-      data => {
-        const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl: '/dashboard-admin';
-        this.router.navigate([redirect]);
-      },
+  postdata(loginForm: any){
+    this.dataService.userlogin(
+      loginForm.value.email, 
+      loginForm.value.password)
 
-      error => {
-        alert("User name or password is incorrect")
-      }
-    );
+      .subscribe( 
+        (response) => {
+          this.users = response;
+          console.log(response);
+          if(Role.Admin == 'Admin'){
+            this.router.navigateByUrl('login/dashboard-admin/in-stack');
+          }
+          else{
+            this.router.navigateByUrl('login/dashboard-customer');}
+          
+        },
+        (error) =>{
+          console.log('error', error)
+         // alert("Logged in failed!")
+        }
+      );
   }
-
-  // save() {
-  //   this.dataService.userlogin();
-
-  // }
 
   get email() {
     return this.loginForm.get('email');
@@ -56,4 +57,6 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 }
+
+
 

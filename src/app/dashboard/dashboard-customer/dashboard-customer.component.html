@@ -31,10 +31,12 @@
                 <a class="sidenav_anchor" href="#">Return Books</a>
             </mat-list-item>
             <mat-list-item>
-                <a class="sidenav_anchor" href="#">Register Student</a>
+                <a class="sidenav_anchor" routerLink="borrow-books" routerLinkActive="active">Available Books</a>
             </mat-list-item>
         </mat-list>
+
         <mat-divider></mat-divider>
+        
         <mat-list>
             <mat-list-item>
                 <a class="sidenav_anchor" href="#">Rules And Penalties</a>
@@ -51,18 +53,7 @@
         </mat-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-        <mat-toolbar color="primary" class="search-toolbar">
-            <span>Search</span>
-            <div class="bar">
-                <input class="searchbar" type="search" placeholder="Title, Author">   
-                <button mat-icon-button>
-                    <mat-icon>search</mat-icon>
-                </button>
-            </div>
-        </mat-toolbar>
-        <div class="content">
-            hello
-        </div>
-    </mat-sidenav-content>
+    <div class="content">
+        <router-outlet></router-outlet> 
+    </div>
 </mat-sidenav-container>

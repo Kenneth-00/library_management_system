@@ -1,0 +1,55 @@
+.container {
+    text-align:center; 
+    border:1px solid black; 
+    width: 100%; 
+    border-collapse: collapse;
+
+    color: black;
+}
+
+.container td, .container th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.container tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+.container tr:hover {
+    background-color: #ddd;
+}
+
+.container th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0446aa;
+
+    color: white;
+}
+
+.search-toolbar {
+    border-radius: 10px;
+    margin-bottom: 16px;
+    width: auto;
+}
+
+.bar{
+    margin: 7px;
+}
+
+.searchbar{
+    border-radius: 30px;
+    border: 1px solid #0e0e0e;
+    height: 45px;
+    width: 450px;
+    font-size: 16px;
+    padding-left: 10px;
+    outline: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}

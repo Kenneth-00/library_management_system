@@ -1,0 +1,56 @@
+<div class="addBook-formfield-container">
+    <div class="addBook-formfield">
+        <form [formGroup] ="addBookForm" (ngSubmit)="postdata(addBookForm)">
+            <mat-form-field>
+                <mat-label for="book_title">Book Title</mat-label>
+                <input matInput class="form-control" name="book_title" formControlName="book_title" placeholder="Book book_title">
+                <mat-error *ngIf="book_title.invalid">
+                    <span *ngIf="book_title.errors?.['required']">title
+                        Book title is required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="authors">Author</mat-label>
+                <input matInput class="form-control" name="authors" formControlName="authors" placeholder="Author/s name">
+                <mat-error *ngIf="authors.invalid">
+                    <span *ngIf="authors.errors?.['required']">
+                        Author's name is required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Date Published</mat-label>
+                <input matInput type="date" class="form-control" name="date_published" formControlName="date_published" placeholder="mm-dd-yyyy">
+                <mat-error *ngIf="date_published.invalid">
+                    <span *ngIf="date_published.errors?.['required']">
+                        This field is required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-label>Category:</mat-label>
+            <mat-radio-group class="radiobtn" name="category" formControlName="category">
+                <mat-radio-button value="Scholarly Book">Scholarly Book</mat-radio-button>
+                <mat-radio-button value="Textbook">Textbook</mat-radio-button>
+                <mat-radio-button value="Anthology">Anthology</mat-radio-button>
+                <mat-radio-button value="Dissertation">Dissertation</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field class="quantity">
+                <mat-label for="quantity">Quantity</mat-label>
+                <input matInput type="number" class="form-control" name="quantity" formControlName="quantity" placeholder="Quantity">
+                <mat-error *ngIf="quantity.invalid">
+                    <span *ngIf="quantity.errors?.['required']">
+                        This field is required
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-label>Status:</mat-label>
+            <mat-radio-group class="radiobtn" name="status" formControlName="status">
+                <mat-radio-button value="In-Stack">In-Stack</mat-radio-button>
+            </mat-radio-group>
+            <button type="submit" class="btn" [disabled]="!addBookForm.valid">
+                ADD
+            </button>
+        </form>
+    </div>
+</div>
