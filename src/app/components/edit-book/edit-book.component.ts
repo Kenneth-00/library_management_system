@@ -11,19 +11,12 @@ import { Books } from 'src/app/books';
 })
 export class EditBookComponent implements OnInit {
 
-  //editBookForm: FormGroup;
+  editBookForm: FormGroup;
 
-  book: Books[];
-  //bookDetails: any = {};
-
-  editBookForm = new FormGroup({
-    book_title: new FormControl(''),
-    authors: new FormControl(''),
-    date_published: new FormControl(''),
-    category: new FormControl(''),
-    quantity: new FormControl(''),
-    status : new FormControl('')
-  })
+  book: Books;
+  bookDetails: any;
+  bookID: any;
+  dataLoaded: boolean=false;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: ApiService,
@@ -31,7 +24,7 @@ export class EditBookComponent implements OnInit {
     private activateRoute: ActivatedRoute) {
 
       this.editBookForm = this.formBuilder.group({
-        book_title: ['', [Validators.required]],
+        book_title: [Validators.required],
         authors: ['', [Validators.required]],
         date_published: ['', [Validators.required]],
         category: ['', [Validators.required]],
@@ -41,36 +34,57 @@ export class EditBookComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.activateRoute.snapshot.params['id']);
-    this.dataService.getBookDetail(this.activateRoute.snapshot.params['id'])
-      .subscribe((response:Books)=> {
-        this.editBookForm = new FormGroup({
-          book_title: new FormControl(response['book_title']),
-          authors: new FormControl(response['authors']),
-          date_published: new FormControl(response['date_published']),
-          category: new FormControl(response['category']),
-          quantity: new FormControl(response['quantity']),
-          status : new FormControl(response['status'])
-        })
-      })
+    
+    let id = '';
+    if(this.activateRoute.snapshot.params['id']){
+      id = this.activateRoute.snapshot.params['id'];
+      console.log(id);
+
+      this.editBookForm = this.formBuilder.group({
+        book_title : [''],
+        authors : [''],
+        date_published : [''],
+        category : [''],
+        quantity :[''],
+        status : ['']
+      });
+        
+      this.dataLoaded=true;
+    }
+
+    
+    
   }
 
-  postdata(editBookForm: any) {
-    this.dataService.updateBook(
-      editBookForm.value.book_title,
-      editBookForm.value.authors,
-      editBookForm.value.date_published,
-      editBookForm.value.category,
-      editBookForm.value.quantity,
-      editBookForm.value.status
-    )
+  loadbookDetails(id:number){
+
+    this.dataService.loadBookInfoById(id).subscribe(response => 
+    {
+      this.editBookForm.controls['book_title'].setValue(response.book_title);
+      this.editBookForm.controls['authors'].setValue(response.authors);
+      this.editBookForm.controls['date_published'].setValue(response.date_published);
+      this.editBookForm.controls['category'].setValue(response.category);
+      this.editBookForm.controls['quantity'].setValue(response.quantity);
+      this.editBookForm.controls['status'].setValue(response.status);
+    })
+
+  }
+
+  postdata(editBookForm:any) {
+
+    this.dataService.updateBook(this.book, this.bookID)
     .subscribe( 
-      (response) => {
-        this.book = response;
-        console.log(this.book);
-        alert("Added Successfully!");
+      (response: any) => {
+        this.book.book_title = this.editBookForm.value.book_title;
+        this.book.authors = this.editBookForm.value.authors;
+        this.book.date_published = this.editBookForm.value.date_published;
+        this.book.category = this.editBookForm.value.category;
+        this.book.quantity = this.editBookForm.value.quantity;
+        this.book.status = this.editBookForm.value.status;
+
+        console.log(response);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );

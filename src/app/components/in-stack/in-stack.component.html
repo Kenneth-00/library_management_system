@@ -8,39 +8,99 @@
     </div>
 </mat-toolbar>
 
-<table class="container">
-    <tr>
-        <th>Action</th>
-        <th>Book ID</th>
-        <th>Book Title</th>
-        <th>Authors</th>
-        <th>Date Published</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Status</th>
-    </tr>
+<mat-card>
+    <table class="container">
+        <tr>
+            <th>Action</th>
+            <th>Book ID</th>
+            <th>Book Title</th>
+            <th>Authors</th>
+            <th>Date Published</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
 
-    <tr *ngFor="let x of book">
-        <td>
-            <a routerLink="../edit-book-details/{{x.book_id}}" routerLinkActive="active">
-            <button >
-                <mat-icon>
-                    edit
-                </mat-icon>
-            </button></a>
-            <button (click)="removeBook(x)">
-                <mat-icon>
-                    delete
-                </mat-icon>
-            </button>
-        </td>
-        <td>{{x.book_id}}</td>
-        <td>{{x.book_title}}</td>
-        <td>{{x.authors}}</td>
-        <td>{{x.date_published}}</td>
-        <td>{{x.category}}</td>
-        <td>{{x.quantity}}</td>
-        <td>{{x.status}}</td>
-    </tr>
+        <tr *ngFor="let details of book">
+            <td>
+                <a routerLink="../edit-book/{{details.book_id}}" routerLinkActive="active">
+                <button>
+                    <mat-icon>
+                        edit
+                    </mat-icon>
+                </button></a>
+                <button (click)="removeBook(details.book_id)">
+                    <mat-icon>
+                        delete
+                    </mat-icon>
+                </button>
+            </td>
+            <td>{{details.book_id}}</td>
+            <td>{{details.book_title}}</td>
+            <td>{{details.authors}}</td>
+            <td>{{details.date_published}}</td>
+            <td>{{details.category}}</td>
+            <td>{{details.quantity}}</td>
+            <td>{{details.status}}</td>
+        </tr>
 
-</table>
+    </table>
+
+
+
+</mat-card>
+
+<!-- Edit -->
+<!--  data-bs-toggle="modal" data-bs-target="#editbook"
+    <div class="modal fade" id="editbook" tabindex="-1" aria-labelledby="editbookLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editbookLabel">UPDATE</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup] ="editBookForm" (ngSubmit)="postdata(editBookForm)">
+                    <mat-form-field>
+                        <mat-label for="book_title">Book Title</mat-label>
+                        <input matInput class="form-control" name="book_title" formControlName="book_title" placeholder="Book book title">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="authors">Author</mat-label>
+                        <input matInput class="form-control"
+                         id="authors" name="authors" formControlName="authors" placeholder="Author/s name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="date_published">Date Published</mat-label>
+                        <input matInput type="date" class="form-control" id="date_published" name="date_published" formControlName="date_published" placeholder="mm-dd-yyyy">
+                        <mat-error *ngIf="date_published.invalid">
+                            <span *ngIf="date_published.errors?.['required']">
+                                This field is required
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-label>Category:</mat-label>
+                    <mat-radio-group class="radiobtn" id="category" name="category" formControlName="category">
+                        <mat-radio-button value="Scholarly Book">Scholarly Book</mat-radio-button>
+                        <mat-radio-button value="Textbook">Textbook</mat-radio-button>
+                        <mat-radio-button value="Anthology">Anthology</mat-radio-button>
+                        <mat-radio-button value="Dissertation">Dissertation</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-form-field class="quantity">
+                        <mat-label for="quantity">Quantity</mat-label>
+                        <input matInput type="number" class="form-control" id="quantity" name="quantity" formControlName="quantity" placeholder="Quantity">
+                    </mat-form-field>
+                    <mat-label>Status:</mat-label>
+                    <mat-radio-group class="radiobtn" id="status" name="status" formControlName="status">
+                        <mat-radio-button value="IN-STACK">In-Stack</mat-radio-button>
+                    </mat-radio-group>
+                    <button type="submit" class="btn">
+                        UPDATE
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+ -->
+

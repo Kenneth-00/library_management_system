@@ -12,6 +12,7 @@ import { PendingBooksComponent } from '../pending-books/pending-books.component'
 import { EditBookComponent } from '../edit-book/edit-book.component';
 import { ListUsersComponent } from '../list-users/list-users.component';
 import { BorrowBooksComponent } from '../borrow-books/borrow-books.component';
+import { RequestBookComponent } from '../request-book/request-book.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
             component:InStackComponent
           },
           {
-            path:'edit-book-details/:id',
+            path:'edit-book/:id',
             component:EditBookComponent
           },
           {
@@ -62,7 +63,11 @@ const routes: Routes = [
         canActivateChild: [AuthguardGuard],
         children: [
           {
-            path:'borrow-books',
+            path:'request-book',
+            component:RequestBookComponent
+          },
+          {
+            path:'available-books',
             component:BorrowBooksComponent
           },
         ]

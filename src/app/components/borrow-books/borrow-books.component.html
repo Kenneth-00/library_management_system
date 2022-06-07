@@ -43,25 +43,3 @@
     </div>
     
 </mat-card>
-
-<div class="borrowed_book" id="addedbooks">
-    <table class="container">
-        <tr>
-            <th>Action</th>
-            <th>Book Title</th>
-        </tr>
-    
-        <tr *ngFor="let added of bookAdd">
-            <td>
-                <button type="button" (click)="delete(added)">
-                    <mat-icon>
-                        delete
-                    </mat-icon>
-                </button>
-            </td>
-            <td>{{added.book_title}}</td>
-        </tr>
-    
-    </table>
-
-</div>

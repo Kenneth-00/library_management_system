@@ -10,10 +10,8 @@ import { Books } from 'src/app/books';
 export class BorrowBooksComponent implements OnInit {
   
   book: Books[];
-  bookAdd: any;
-  bookToAdd = {
-    book_title: ""
-  }
+  bookAdd: any = [];
+  bookToAdd: any;
   
   constructor(private dataService: ApiService) { 
     this.userviewBookDetails();
@@ -31,16 +29,6 @@ export class BorrowBooksComponent implements OnInit {
     );
   }
 
-  // removeBook(book: any){
-  //   this.dataService.deleteBook(book.book_id)
-  //   .subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       this.userviewBookDetails();
-  //     }
-  //   );
-  // }
-
   add(bookAdded:any){
     this.bookToAdd = bookAdded;
     this.dataService.borrowBook(bookAdded)
@@ -51,11 +39,11 @@ export class BorrowBooksComponent implements OnInit {
   }
 
   delete(deleteBook:any){
-    // this.dataService.deleteBook(deleteBook.book_id)
-    // .subscribe((response:any) => {
-    //   console.log(response);
-    //   this.userviewBookDetails();
-    // })
+    this.dataService.deleteBook(deleteBook.book_id)
+    .subscribe((response:any) => {
+      console.log(response);
+      this.userviewBookDetails();
+    })
   }
 
 

@@ -30,6 +30,7 @@ import { ApiService } from './api.service';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
 import { BorrowBooksComponent } from './components/borrow-books/borrow-books.component';
+import { RequestBookComponent } from './components/request-book/request-book.component';
 
 
 
@@ -47,7 +48,8 @@ import { BorrowBooksComponent } from './components/borrow-books/borrow-books.com
     PendingBooksComponent,
     EditBookComponent,
     ListUsersComponent,
-    BorrowBooksComponent
+    BorrowBooksComponent,
+    RequestBookComponent
   ],
   imports: [
     BrowserModule,

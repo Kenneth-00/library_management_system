@@ -1,1 +1,36 @@
-<p>pending-books works!</p>
+<mat-toolbar color="primary" class="search-toolbar">
+    <span>Search</span>
+    <div class="bar">
+        <input class="searchbar" type="search" placeholder="Title, Author">   
+        <button mat-icon-button class="btnSearch">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<mat-card>
+    <table class="container">
+        <tr>
+            <th>Username</th>
+            <th>Book ID</th>
+            <th>Issue Date</th>
+            <th>Return Date</th>
+            <th>Status</th>
+        </tr>
+
+        <tr *ngFor="let request of requests">
+            <td>
+                <button>
+                    <mat-icon>
+                        add
+                    </mat-icon>
+                </button>
+            </td>
+            <td>{{request.username}}</td>
+            <td>{{request.book_id}}</td>
+            <td>{{request.issue_date}}</td>
+            <td>{{request.return_date}}</td>
+            <td>{{request.status}}</td>
+        </tr>
+    </table>
+</mat-card>

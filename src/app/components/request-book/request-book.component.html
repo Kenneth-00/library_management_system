@@ -1,0 +1,30 @@
+<mat-toolbar color="primary" class="search-toolbar">
+    <span>Search</span>
+    <div class="bar">
+        <input class="searchbar" type="search" placeholder="Title, Author">   
+        <button mat-icon-button class="btnSearch">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+<mat-card>
+    <div class="request_book" id="addedbooks">
+        <table class="container">
+            <tr>
+                <th>Book Title</th>
+                <th>Status</th>
+                <th>Request Date</th>
+                <th>Return Date</th>
+            </tr>
+        
+            <tr *ngFor="let approved of requestBook">
+                <td>{{approved.book_title}}</td>
+                <td>{{approved.status}}</td>
+                <td>{{approved.request_date}}</td>
+                <td>{{approved.return_date}}</td>
+            </tr>
+        </table>
+    </div>
+</mat-card>
+

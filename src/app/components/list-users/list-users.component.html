@@ -19,13 +19,7 @@
 
     <tr *ngFor="let x of user">
         <td>
-            <a routerLink="../edit-book-details" routerLinkActive="active">
-            <button class="btnIcon" (click)="viewUserDetails()">
-                <mat-icon>
-                    edit
-                </mat-icon>
-            </button></a>
-            <button class="btnIcon">
+            <button class="btnIcon" (click)="removeUser(x.id)">
                 <mat-icon>
                     delete
                 </mat-icon>

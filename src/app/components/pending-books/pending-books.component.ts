@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-pending-books',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingBooksComponent implements OnInit {
 
-  constructor() { }
+  requests: any =[];
+
+  constructor(private dataService: ApiService) { }
 
   ngOnInit(): void {
+
+    this.requestBook();
+
+  }
+
+  requestBook(){
+    this.dataService.viewRequests()
+    .subscribe(
+      (response) => {
+        console.log('test ', response);
+        this.requests = response;
+
+      }
+    );
   }
 
 }

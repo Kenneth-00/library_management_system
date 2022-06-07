@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
@@ -13,9 +13,9 @@ import { Books } from 'src/app/books';
 export class InStackComponent implements OnInit {
 
   book: Books[];
-  bookDetails: any = {};
-
   editBookForm: FormGroup;
+
+
 
   constructor(private dataService: ApiService, 
     private router: Router,
@@ -23,6 +23,15 @@ export class InStackComponent implements OnInit {
     private formBuilder: FormBuilder) {
 
     this.adminview();
+
+    // this.editBookForm = this.formBuilder.group({
+    //   book_title: ['', [Validators.required]],
+    //   authors: ['', [Validators.required]],
+    //   date_published: ['', [Validators.required]],
+    //   category: ['', [Validators.required]],
+    //   quantity: ['', [Validators.required]],
+    //   status : ['', [Validators.required]]
+    // })
 
   }
 
@@ -39,16 +48,12 @@ export class InStackComponent implements OnInit {
     );
   }
 
-
-  removeBook(book: any){
-      this.dataService.deleteBook(this.activateRoute.snapshot.params['id'])
+  removeBook(id: number){
+      this.dataService.deleteBook(id)
     .subscribe(
       (response) => {
-        console.log(this.activateRoute.snapshot.params['id']);
-        //this.adminviewBookDetails();
+        this.adminview();
       }
-    );
+    )
   }
-
-  
 }

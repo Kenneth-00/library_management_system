@@ -29,15 +29,15 @@ export class ListUsersComponent implements OnInit {
     );
   }
 
-//   removeUser(user: Users){
-//     this.dataService.deleteBook(user.id)
-//   .subscribe(
-//     (response) => {
-//       console.log(response);
-//       this.viewUserDetails();
-//     }
-//   );
-// }
+  removeUser(id: number){
+    this.dataService.deleteUser(id)
+  .subscribe(
+    (response) => {
+      console.log(response);
+      this.viewUserDetails();
+    }
+  );
+}
 
 
 }
